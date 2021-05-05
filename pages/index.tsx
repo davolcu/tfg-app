@@ -1,11 +1,28 @@
-// Static files for the homepage
-import styles from '@/styles/modules/Home.module.scss';
-
-// Home utils
-import { homeTitle } from '@/helpers/pages/home';
-
-// Homepage Components
+// Out of the box imports
+import { GetServerSideProps } from 'next';
+// Custom imports
 import Page from '@/components/page';
+import styles from '@/styles/modules/Home.module.scss';
+import { homeTitle } from '@/helpers/pages/home';
+import { getUserCookie } from '@/services/cookies';
+
+export const getServerSideProps: GetServerSideProps = async (context) => {
+    // Get the user's cookie based on the request
+    const userToken = getUserCookie(context);
+
+    if (!userToken) {
+        return {
+            redirect: {
+                destination: '/login',
+                permanent: false,
+            },
+        };
+    }
+
+    return {
+        props: { userToken },
+    };
+};
 
 const Home = () => {
     return (

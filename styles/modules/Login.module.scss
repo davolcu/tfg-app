@@ -1,0 +1,42 @@
+// Colors of the application
+@import '../style-guide/colors';
+// Mixins of the application
+@import '../style-guide/mixins';
+
+.login {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 100vw;
+    height: 100vh;
+    background-color: $secondary-color;
+
+    &__logo {
+        width: 60px;
+        margin-bottom: 15px;
+    }
+
+    &__container {
+        display: flex;
+        flex-direction: column;
+        width: 400px;
+        padding: 25px;
+        border-radius: 4px;
+        background-color: $ternary-color;
+    }
+
+    &__title {
+        @include title-element;
+        text-align: center;
+    }
+
+    &__input {
+        @include input-element;
+        margin-bottom: 10px;
+    }
+
+    &__button {
+        @include primary-button;
+    }
+}

@@ -11,7 +11,8 @@
             "@/components/*": [ "components/*" ],
             "@/helpers/*": [ "helpers/*" ],
             "@/utils/*": [ "utils/*" ],
-            "@/styles/*": [ "styles/*" ]
+            "@/styles/*": [ "styles/*" ],
+            "@/services/*": [ "services/*" ]
         },
         "allowJs": true,
         "skipLibCheck": true,

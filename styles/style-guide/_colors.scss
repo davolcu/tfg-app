@@ -1,0 +1,23 @@
+////////////////////////////////////
+// Application's background colors
+////////////////////////////////////
+$primary-color: #1a2b82;
+$secondary-color: #0d293e;
+$ternary-color: #fff;
+
+////////////////////////////////////
+// Application's text colors
+////////////////////////////////////
+$primary-text-color: #333;
+
+////////////////////////////////////
+// Aplication's elements colors
+////////////////////////////////////
+
+// Inputs
+$input-border-color: #ccc;
+$input-placeholder-color: #808080;
+// Buttons
+$primary-button-color: $primary-color;
+$primary-button-text-color: $ternary-color;
+$primary-button-color-hover: lighten($primary-color, 20);
