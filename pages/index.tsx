@@ -11,9 +11,9 @@ import { getUserCookie } from '@/services/cookies';
 
 export const getServerSideProps: GetServerSideProps = async (context) => {
     // Get the user's cookie based on the request
-    const userToken = getUserCookie(context);
+    const token = getUserCookie(context);
 
-    if (!userToken) {
+    if (!token) {
         return {
             redirect: {
                 destination: '/login',
@@ -23,15 +23,15 @@ export const getServerSideProps: GetServerSideProps = async (context) => {
     }
 
     return {
-        props: { userToken },
+        props: { token },
     };
 };
 
-const Home: FunctionComponent<IHomepage> = ({ userToken }) => {
+const Home: FunctionComponent<IHomepage> = ({ token }) => {
     const pageProps = { title: homeTitle };
 
     return (
-        <AuthPage userToken={userToken} pageProps={pageProps}>
+        <AuthPage token={token} pageProps={pageProps}>
             <main>HEY</main>
         </AuthPage>
     );

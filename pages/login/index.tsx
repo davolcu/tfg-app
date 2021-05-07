@@ -1,6 +1,7 @@
 // Out of the box imports
 import { useState } from 'react';
 import { GetServerSideProps } from 'next';
+import { useRouter } from 'next/router';
 // Custom imports
 import styles from '@/styles/modules/Login.module.scss';
 import Page from '@/components/Placeholder/Page';
@@ -27,6 +28,7 @@ export const getServerSideProps: GetServerSideProps = async (context) => {
 const Login = () => {
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
+    const router = useRouter();
     const isDisabledButton = !email.length || !password.length;
 
     // Handler to check if the enter press should submit the form
@@ -46,7 +48,7 @@ const Login = () => {
 
                 if (jwtToken) {
                     setClientCookie('jwtToken', jwtToken);
-                    location.href = '/';
+                    router.push('/');
                 }
             })
             .catch((error: Error) => {

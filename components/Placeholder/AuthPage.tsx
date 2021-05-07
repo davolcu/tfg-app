@@ -14,13 +14,14 @@ import { populateUser } from '@/utils/services/cognitoUtils';
 const contextDefaultValue: IAuthPageContext = { user: {} };
 const AuthPageContext = createContext<IAuthPageContext>(contextDefaultValue);
 
-const AuthPage: FunctionComponent<IAuthPage> = ({ children, userToken, pageProps }) => {
-    const [user, setUser] = useState({});
+const AuthPage: FunctionComponent<IAuthPage> = ({ children, token, pageProps }) => {
+    const [user, setUser] = useState({ token });
 
+    // Get the user given its token and the current context in an async way
     useEffect(() => {
-        getCurrentUser(userToken)
+        getCurrentUser(token)
             .then((data) => {
-                setUser(populateUser(data));
+                setUser({ ...user, ...populateUser(data) });
             })
             .catch((error) => {
                 console.error(error);

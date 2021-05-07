@@ -12,7 +12,7 @@ export interface IPage {
 // Interface for the AuthPage component
 export interface IAuthPage {
     children: ReactNode;
-    userToken: string;
+    token: string;
     pageProps?: object;
 }
 
