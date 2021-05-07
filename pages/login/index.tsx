@@ -2,10 +2,11 @@
 import { useState } from 'react';
 import { GetServerSideProps } from 'next';
 // Custom imports
-import Page from '@/components/Page';
 import styles from '@/styles/modules/Login.module.scss';
+import Page from '@/components/Placeholder/Page';
 import { signIn } from '@/services/login';
-import { getUserCookie } from '@/services/cookies';
+import { getUserCookie, setClientCookie } from '@/services/cookies';
+import { createToast } from '@/utils/utils';
 
 export const getServerSideProps: GetServerSideProps = async (context) => {
     // Get the user's cookie based on the request
@@ -34,12 +35,29 @@ const Login = () => {
             return;
         }
 
-        signIn(email, password);
+        signInHandler();
+    };
+
+    // Handler to sign in given the email and password
+    const signInHandler = () => {
+        signIn(email, password)
+            .then((data) => {
+                const jwtToken = data.getIdToken().getJwtToken();
+
+                if (jwtToken) {
+                    setClientCookie('jwtToken', jwtToken);
+                    location.href = '/';
+                }
+            })
+            .catch((error: Error) => {
+                console.error(error);
+                createToast({ text: error.message, type: 'error', duration: 3500 });
+            });
     };
 
     return (
         <Page title='Login'>
-            <section className={styles.login}>
+            <main className={styles.login}>
                 <img className={styles.login__logo} src='/logo.png' alt='Next Logo' />
 
                 <div className={styles.login__container}>
@@ -65,13 +83,13 @@ const Login = () => {
                     <button
                         type='button'
                         className={styles.login__button}
-                        onClick={() => signIn(email, password)}
+                        onClick={() => signInHandler()}
                         disabled={isDisabledButton}
                     >
                         Login
                     </button>
                 </div>
-            </section>
+            </main>
         </Page>
     );
 };

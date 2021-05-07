@@ -1,4 +1,5 @@
-import { iToast, iToggler, iFader } from '@/interfaces/utils';
+// Interfaces of the view
+import { IToast, IToggler, IFader } from '@/interfaces/utils';
 
 /**
  * Arrow function to toggle elements without jQuery
@@ -6,7 +7,7 @@ import { iToast, iToggler, iFader } from '@/interfaces/utils';
  * @param {String} display: Which type of display has the element when showing up | default => block
  * @param {Number} timer: Fading animation timeout | default => 300ms
  */
-export const toggleElement = ({ element, display = 'block', timer = 300 }: iToggler) => {
+export const toggleElement = ({ element, display = 'block', timer = 300 }: IToggler) => {
     if (!element) return;
 
     // If the current display matches the target display, do nothing
@@ -35,7 +36,7 @@ export const toggleElement = ({ element, display = 'block', timer = 300 }: iTogg
  * @param {String} selector: Valid element selector
  * @param {Number} timer: Fading animation timeout | default => 300ms
  */
-export const fadeOutBySelector = ({ selector, timer = 300 }: iFader) => {
+export const fadeOutBySelector = ({ selector, timer = 300 }: IFader) => {
     document.querySelectorAll<HTMLElement>(selector).forEach((element) => {
         toggleElement({ element, display: 'none', timer });
     });
@@ -47,7 +48,7 @@ export const fadeOutBySelector = ({ selector, timer = 300 }: iFader) => {
  * @param {String} display: Which type of display has the element when showing up | default => block
  * @param {Number} timer: Fading animation timeout | default => 300ms
  */
-export const fadeInBySelector = ({ selector, display = 'block', timer = 300 }: iFader) => {
+export const fadeInBySelector = ({ selector, display = 'block', timer = 300 }: IFader) => {
     document.querySelectorAll<HTMLElement>(selector).forEach((element) => {
         toggleElement({ element, display, timer });
     });
@@ -60,7 +61,7 @@ export const fadeInBySelector = ({ selector, display = 'block', timer = 300 }: i
  * @param {String} extraClasses: Extra classes needed for the toast
  * @param {Number} duration: Fading animation timeout | default => 2500ms
  */
-export const createToast = ({ text, type, extraClasses = [], duration = 2500 }: iToast) => {
+export const createToast = ({ text, type, extraClasses = [], duration = 2500 }: IToast) => {
     const toastClass = 'toast';
 
     if (!document.querySelector(`.${toastClass}`)) {
