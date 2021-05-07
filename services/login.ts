@@ -1,17 +1,19 @@
 // Custom imports
 import { getCognitoUserPool, getCognitoUser, getAuthDetails, getUserAttributes } from '@/services/cognitoUserPool';
 import { setClientCookie } from '@/services/cookies';
+import { createToast } from '@/utils/utils';
 
 // Instance of the cognito user pool
 const cognitoUserPool = getCognitoUserPool();
 
-// Sign up a mocked user
+// Sign up a user
 export const signUp = (email: string, password: string, params: object) => {
     const userAttributes = getUserAttributes(params);
 
     cognitoUserPool.signUp(email, password, userAttributes, [], (err, data) => {
         if (err) {
             console.error(err);
+            createToast({ text: err.message, type: 'error', duration: 3500 });
             return;
         }
 
@@ -36,6 +38,7 @@ export const signIn = (email: string, password: string) => {
         },
         onFailure: (err) => {
             console.error(err);
+            createToast({ text: err.message, type: 'error', duration: 3500 });
         },
     });
 };

@@ -12,7 +12,8 @@
             "@/helpers/*": [ "helpers/*" ],
             "@/utils/*": [ "utils/*" ],
             "@/styles/*": [ "styles/*" ],
-            "@/services/*": [ "services/*" ]
+            "@/services/*": [ "services/*" ],
+            "@/interfaces/*": [ "interfaces/*" ]
         },
         "allowJs": true,
         "skipLibCheck": true,

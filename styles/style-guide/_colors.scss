@@ -21,3 +21,9 @@ $input-placeholder-color: #808080;
 $primary-button-color: $primary-color;
 $primary-button-text-color: $ternary-color;
 $primary-button-color-hover: lighten($primary-color, 20);
+// Toasts
+$toast-color: $primary-text-color;
+$toast-text-color: $ternary-color;
+$toast-success-border-color: #4cae4c;
+$toast-error-border-color: #d5403b;
+$toast-warning-border-color: #f49d21;

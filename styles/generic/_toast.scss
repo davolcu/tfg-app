@@ -1,0 +1,40 @@
+@import '../style-guide/colors';
+
+/* Specific styles for custom toasts */
+.toast {
+    z-index: 9999;
+    position: fixed;
+    top: 60px;
+    right: 25px;
+    padding: 15px 20px;
+    background-color: $toast-color;
+    border: none;
+    color: $toast-text-color;
+    opacity: 0.95;
+    display: none;
+
+    &--success:before,
+    &--error:before,
+    &--warning:before {
+        content: '';
+        position: absolute;
+        width: 5px;
+        height: 100%;
+        top: 0;
+        left: 0;
+        border-top-left-radius: 3px;
+        border-bottom-left-radius: 3px;
+    }
+
+    &--success:before {
+        background-color: $toast-success-border-color;
+    }
+
+    &--error:before {
+        background-color: $toast-error-border-color;
+    }
+
+    &--warning:before {
+        background-color: $toast-warning-border-color;
+    }
+}

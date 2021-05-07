@@ -1,7 +1,7 @@
 // Out of the box imports
 import { GetServerSideProps } from 'next';
 // Custom imports
-import Page from '@/components/page';
+import Page from '@/components/Page';
 import styles from '@/styles/modules/Home.module.scss';
 import { homeTitle } from '@/helpers/pages/home';
 import { getUserCookie } from '@/services/cookies';
