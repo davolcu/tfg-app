@@ -5,6 +5,16 @@
 /////////////////////////////////////////////
 // Standard patterns for the html elements
 /////////////////////////////////////////////
+
+@mixin main-element {
+    display: flex;
+    margin-left: 70px;
+    padding-top: 55px;
+    width: calc(100vw - 70px);
+    height: 100vh;
+    background-color: $layout-color;
+}
+
 @mixin title-element {
     font-size: $title-size;
     font-weight: bold;

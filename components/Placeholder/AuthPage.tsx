@@ -7,6 +7,7 @@ import Page from '@/components/Placeholder/Page';
 import Header from '@/components/Generic/Header';
 import Sidebar from '@/components/Generic/Sidebar';
 import { getCurrentUser } from '@/services/cognito';
+import { expireUserCookie } from '@/services/cookies';
 import { createToast } from '@/utils/utils';
 import { populateUser } from '@/utils/services/cognitoUtils';
 
@@ -26,7 +27,8 @@ const AuthPage: FunctionComponent<IAuthPage> = ({ children, token, pageProps }) 
             .catch((error) => {
                 console.error(error);
                 createToast({ text: error.message, type: 'error', duration: 3500 });
-                // TODO Logout
+                expireUserCookie();
+                location.href = '/login';
             });
     }, []);
 

@@ -4,7 +4,7 @@ import Head from 'next/head';
 // Interfaces of the component
 import { IPage } from '@/interfaces/components';
 // Custom imports
-import { getFormattedTitle } from '@/utils/components/page';
+import { getFormattedTitle } from '@/utils/components/pageUtils';
 
 const Page: FunctionComponent<IPage> = ({ children, title, description, keywords }) => {
     const formattedTitle = getFormattedTitle(title);

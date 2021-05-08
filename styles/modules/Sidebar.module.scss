@@ -1,0 +1,16 @@
+// Colors of the application
+@import '../style-guide/colors';
+@import '../style-guide/sizes';
+// Mixins of the application
+@import '../style-guide/mixins';
+
+.sidebar {
+    position: fixed;
+    top: 55px;
+    width: 70px;
+    height: calc(100vh - 55px);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: $secondary-color;
+}

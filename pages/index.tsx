@@ -6,7 +6,6 @@ import { IHomepage } from '@/interfaces/pages';
 // Custom imports
 import styles from '@/styles/modules/Home.module.scss';
 import { AuthPage } from '@/components/Placeholder/AuthPage';
-import { homeTitle } from '@/helpers/pages/homeHelper';
 import { getUserCookie } from '@/services/cookies';
 
 export const getServerSideProps: GetServerSideProps = async (context) => {
@@ -28,11 +27,11 @@ export const getServerSideProps: GetServerSideProps = async (context) => {
 };
 
 const Home: FunctionComponent<IHomepage> = ({ token }) => {
-    const pageProps = { title: homeTitle };
+    const pageProps = { title: 'Dashboard' };
 
     return (
         <AuthPage token={token} pageProps={pageProps}>
-            <main>HEY</main>
+            <main className={styles.home}>HEY</main>
         </AuthPage>
     );
 };

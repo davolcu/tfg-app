@@ -1,7 +1,6 @@
 // Out of the box imports
 import { useState } from 'react';
 import { GetServerSideProps } from 'next';
-import { useRouter } from 'next/router';
 // Custom imports
 import styles from '@/styles/modules/Login.module.scss';
 import Page from '@/components/Placeholder/Page';
@@ -28,7 +27,6 @@ export const getServerSideProps: GetServerSideProps = async (context) => {
 const Login = () => {
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
-    const router = useRouter();
     const isDisabledButton = !email.length || !password.length;
 
     // Handler to check if the enter press should submit the form
@@ -48,7 +46,7 @@ const Login = () => {
 
                 if (jwtToken) {
                     setClientCookie('jwtToken', jwtToken);
-                    router.push('/');
+                    location.href = '/';
                 }
             })
             .catch((error: Error) => {
@@ -60,7 +58,7 @@ const Login = () => {
     return (
         <Page title='Login'>
             <main className={styles.login}>
-                <img className={styles.login__logo} src='/logo.png' alt='Next Logo' />
+                <img className={styles.login__logo} src='/images/logo.png' alt='Next Logo' />
 
                 <div className={styles.login__container}>
                     <h1 className={styles.login__title}>Authentication</h1>

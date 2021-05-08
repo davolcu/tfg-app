@@ -9,6 +9,7 @@ $ternary-color: #fff;
 // Application's text colors
 ////////////////////////////////////
 $primary-text-color: #333;
+$layout-color: darken($ternary-color, 10%);
 
 ////////////////////////////////////
 // Aplication's elements colors
@@ -16,7 +17,7 @@ $primary-text-color: #333;
 
 // Inputs
 $input-border-color: #ccc;
-$input-placeholder-color: #808080;
+$input-placeholder-color: darken($input-border-color, 30%);
 // Buttons
 $primary-button-color: $primary-color;
 $primary-button-text-color: $ternary-color;

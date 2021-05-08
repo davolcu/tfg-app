@@ -16,7 +16,12 @@ export interface IAuthPage {
     pageProps?: object;
 }
 
+// Interface for the User entity
+export interface IUser {
+    [key: string]: string;
+}
+
 // Interface for the AuthPage context
 export interface IAuthPageContext {
-    user: object;
+    user: IUser;
 }

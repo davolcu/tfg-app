@@ -8,13 +8,13 @@ import {
 } from 'amazon-cognito-identity-js';
 
 // User pool data from the AWS Cognito user pool
-const userPoolData = {
+const USER_POOL_CREDENTIALS = {
     UserPoolId: 'eu-west-2_cs84M28p4',
     ClientId: '4k4sjkn1g07fofkf9boftkknv1',
 };
 
 // Export the cognito user pool from the user pool data
-export const getCognitoUserPool = () => new CognitoUserPool(userPoolData);
+export const getCognitoUserPool = () => new CognitoUserPool(USER_POOL_CREDENTIALS);
 
 // Constructor to create an instance of a cognito user
 export const getCognitoUser = (Username: string, Pool: CognitoUserPool) => new CognitoUser({ Username, Pool });
@@ -39,16 +39,24 @@ export const getCurrentUser = async (userToken: string) => {
                 return;
             }
 
-            if (session.isValid() && session.getIdToken().getJwtToken() === userToken) {
-                user.getUserAttributes((err, attributes) => {
-                    if (err) {
-                        reject(err);
-                        return;
-                    }
-
-                    resolve(attributes!);
-                });
+            if (!session.isValid()) {
+                reject({ message: `Session is not valid. Logging out` });
+                return;
             }
+
+            if (session.getIdToken().getJwtToken() !== userToken) {
+                reject({ message: `Session and user tokens do not match. Logging out` });
+                return;
+            }
+
+            user.getUserAttributes((err, attributes) => {
+                if (err) {
+                    reject(err);
+                    return;
+                }
+
+                resolve(attributes!);
+            });
         });
     });
 };
