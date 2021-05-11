@@ -22,10 +22,15 @@ export const getCognitoUser = (Username: string, Pool: CognitoUserPool) => new C
 // Constructor to create an instance of a authentication details
 export const getAuthDetails = (Username: string, Password: string) => new AuthenticationDetails({ Username, Password });
 
-// Exports the current user if it exists and its jwt token matches with the given one
-export const getCurrentUser = async (userToken: string) => {
+// Exports the current user if it exists
+export const getCurrentUser = () => {
     const userPool = getCognitoUserPool();
-    const user = userPool.getCurrentUser();
+    return userPool.getCurrentUser();
+};
+
+// Exports the current user data if there's a user and its jwt token matches with the given one
+export const getCurrentUserData = async (userToken: string) => {
+    const user = getCurrentUser();
 
     return await new Promise<CognitoUserAttribute[]>((resolve, reject) => {
         if (!user) {

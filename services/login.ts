@@ -1,7 +1,8 @@
 // Out of the box imports
 import { CognitoUserSession, ISignUpResult } from 'amazon-cognito-identity-js';
 // Custom imports
-import { getCognitoUserPool, getCognitoUser, getAuthDetails } from '@/services/cognito';
+import { getCognitoUserPool, getCognitoUser, getAuthDetails, getCurrentUser } from '@/services/cognito';
+import { expireUserCookie } from '@/services/cookies';
 import { populateUserAttributes } from '@/utils/services/cognitoUtils';
 
 // Instance of the cognito user pool
@@ -34,4 +35,15 @@ export const signIn = async (email: string, password: string) => {
             onFailure: (error: Error) => reject(error),
         });
     });
+};
+
+// Sign out from the current user
+export const signOut = () => {
+    const user = getCurrentUser();
+
+    if (user) {
+        user.signOut();
+        expireUserCookie();
+        location.href = '/login';
+    }
 };

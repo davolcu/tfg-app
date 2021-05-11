@@ -6,23 +6,25 @@ import { IAuthPage, IAuthPageContext } from '@/interfaces/components';
 import Page from '@/components/Placeholder/Page';
 import Header from '@/components/Generic/Header';
 import Sidebar from '@/components/Generic/Sidebar';
-import { getCurrentUser } from '@/services/cognito';
+import { getCurrentUserData } from '@/services/cognito';
 import { expireUserCookie } from '@/services/cookies';
 import { createToast } from '@/utils/utils';
 import { populateUser } from '@/utils/services/cognitoUtils';
 
 // Create the context for the auth pages
-const contextDefaultValue: IAuthPageContext = { user: {} };
+const contextDefaultValue: IAuthPageContext = { user: {}, loaded: false };
 const AuthPageContext = createContext<IAuthPageContext>(contextDefaultValue);
 
-const AuthPage: FunctionComponent<IAuthPage> = ({ children, token, pageProps }) => {
+const AuthPage: FunctionComponent<IAuthPage> = ({ children, token, pageProps, showSidebar = true }) => {
     const [user, setUser] = useState({ token });
+    const [loaded, setLoaded] = useState(false);
 
     // Get the user given its token and the current context in an async way
     useEffect(() => {
-        getCurrentUser(token)
+        getCurrentUserData(token)
             .then((data) => {
                 setUser({ ...user, ...populateUser(data) });
+                setLoaded(true);
             })
             .catch((error) => {
                 console.error(error);
@@ -33,10 +35,10 @@ const AuthPage: FunctionComponent<IAuthPage> = ({ children, token, pageProps }) 
     }, []);
 
     return (
-        <AuthPageContext.Provider value={{ user }}>
+        <AuthPageContext.Provider value={{ user, loaded }}>
             <Page {...pageProps}>
                 <Header />
-                <Sidebar />
+                {showSidebar && <Sidebar />}
                 {children}
             </Page>
         </AuthPageContext.Provider>

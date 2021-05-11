@@ -13,7 +13,8 @@
             "@/utils/*": [ "utils/*" ],
             "@/styles/*": [ "styles/*" ],
             "@/services/*": [ "services/*" ],
-            "@/interfaces/*": [ "interfaces/*" ]
+            "@/interfaces/*": [ "interfaces/*" ],
+            "@/hooks/*": [ "hooks/*" ]
         },
         "allowJs": true,
         "skipLibCheck": true,
