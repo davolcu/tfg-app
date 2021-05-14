@@ -8,17 +8,30 @@
 
 @mixin main-element {
     display: flex;
-    margin-left: 70px;
+    flex-direction: column;
+    align-items: center;
+    margin-left: 80px;
     padding-top: 55px;
-    width: calc(100vw - 70px);
+    width: calc(100vw - 80px);
     height: 100vh;
+    color: $primary-text-color;
     background-color: $layout-color;
 }
 
 @mixin title-element {
     font-size: $title-size;
     font-weight: bold;
+    line-height: 1;
     margin-bottom: 15px;
+    color: $primary-text-color;
+}
+
+@mixin container-title-element {
+    font-size: $container-title-size;
+    font-weight: bold;
+    line-height: 1;
+    margin-bottom: 5px;
+    color: $primary-text-color;
 }
 
 @mixin input-element {
@@ -36,6 +49,24 @@
     &:focus,
     &:visited {
         border-color: $primary-color;
+    }
+}
+
+@mixin label-element {
+    font-size: $common-size;
+    font-weight: bold;
+    color: $primary-text-color;
+    margin-bottom: 5px;
+}
+
+@mixin link-element {
+    color: $link-color;
+    cursor: pointer;
+    transition: color 200ms linear;
+    text-decoration: none !important;
+
+    &:hover {
+        color: $link-hover-color;
     }
 }
 

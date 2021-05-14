@@ -4,7 +4,7 @@ import { GetServerSideProps } from 'next';
 // Interfaces of the component
 import { IHomepage } from '@/interfaces/pages';
 // Custom imports
-import styles from '@/styles/modules/Home.module.scss';
+import styles from '@/styles/modules/pages/Home.module.scss';
 import { AuthPage } from '@/components/Placeholder/AuthPage';
 import { getUserCookie } from '@/services/cookies';
 

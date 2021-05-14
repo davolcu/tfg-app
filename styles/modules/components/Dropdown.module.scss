@@ -1,6 +1,6 @@
 // Colors of the application
-@import '../style-guide/colors';
-@import '../style-guide/sizes';
+@import '../../style-guide/colors';
+@import '../../style-guide/sizes';
 
 .dropdown {
     display: none;
@@ -11,10 +11,12 @@
     width: 100%;
     flex-direction: column;
     padding: 5px 0;
+    color: $primary-text-color;
     background-color: $ternary-color;
-    border: 1px solid $input-border-color;
+    border: 1px solid $border-color;
     border-radius: 4px;
     box-shadow: 0 5px 5px rgb(0 0 0 / 8%);
+    z-index: 2;
 
     &__option {
         width: 100%;

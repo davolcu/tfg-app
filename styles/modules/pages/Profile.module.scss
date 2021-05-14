@@ -1,0 +1,13 @@
+// Mixins of the application
+@import '../../style-guide/mixins';
+
+.profile {
+    @include main-element;
+
+    &__container {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        column-gap: 25px;
+        row-gap: 20px;
+    }
+}

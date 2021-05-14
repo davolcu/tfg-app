@@ -1,0 +1,30 @@
+// Colors of the application
+@import '../../style-guide/colors';
+@import '../../style-guide/sizes';
+// Mixins of the application
+@import '../../style-guide/mixins';
+
+.sidebar {
+    position: fixed;
+    top: 55px;
+    width: 80px;
+    height: calc(100vh - 55px);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: $secondary-color;
+
+    &__items {
+        padding: 0;
+    }
+
+    &__item {
+        padding: 25px;
+        cursor: pointer;
+        transition: background-color 150ms linear;
+
+        &:hover {
+            background-color: $primary-color;
+        }
+    }
+}

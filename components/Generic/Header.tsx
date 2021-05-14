@@ -4,7 +4,7 @@ import { useContext } from 'react';
 import { faCaretDown } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 // Custom imports
-import styles from '@/styles/modules/Header.module.scss';
+import styles from '@/styles/modules/components/Header.module.scss';
 import { AuthPageContext } from '@/components/Placeholder/AuthPage';
 import Dropdown from '@/components/Generic/Dropdown';
 import { constants } from '@/helpers/components/headerHelper';

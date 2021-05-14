@@ -41,3 +41,48 @@ export interface IHeaderDropdownOption {
 export interface IDropdown {
     options: IHeaderDropdownOption[];
 }
+
+// Interface for the Sidebar item
+export interface ISidebarItem {
+    id: string;
+    image: string;
+}
+
+// Interface for the Navigation bar Breadcrumbs
+export interface IBreadcrumb {
+    id: string;
+    value: string;
+    link?: string;
+    image?: string;
+}
+
+// Interface for the Navigation bar component
+export interface INavigationBar {
+    breadcrumbs: IBreadcrumb[];
+}
+
+// Interface for the Container component
+export interface IContainer {
+    children: ReactNode;
+    title?: string;
+    subtitle?: string;
+}
+
+// Interface for the Loader component
+export interface ILoader {
+    size?: string;
+}
+
+// Interface for the Input component
+export interface IInput {
+    name?: string;
+    type?: string;
+    step?: string;
+    min?: string;
+    max?: string;
+    value?: string | number;
+    label?: string;
+    placeholder?: string;
+    id?: string;
+    setter: Function;
+}

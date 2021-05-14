@@ -2,7 +2,7 @@
 import { useState } from 'react';
 import { GetServerSideProps } from 'next';
 // Custom imports
-import styles from '@/styles/modules/Login.module.scss';
+import styles from '@/styles/modules/pages/Login.module.scss';
 import Page from '@/components/Placeholder/Page';
 import { signIn } from '@/services/login';
 import { getUserCookie, setClientCookie } from '@/services/cookies';

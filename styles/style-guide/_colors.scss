@@ -15,9 +15,11 @@ $layout-color: darken($ternary-color, 10%);
 // Aplication's elements colors
 ////////////////////////////////////
 
+// Border color
+$border-color: #ccc;
 // Inputs
-$input-border-color: #ccc;
-$input-placeholder-color: darken($input-border-color, 30%);
+$input-border-color: $border-color;
+$input-placeholder-color: darken($border-color, 30%);
 // Buttons
 $primary-button-color: $primary-color;
 $primary-button-text-color: $ternary-color;
@@ -30,3 +32,6 @@ $toast-error-border-color: #d5403b;
 $toast-warning-border-color: #f49d21;
 // Dropdowns
 $dropdown-option-hover-color: #f1f1f1;
+// Links
+$link-color: #337ab7;
+$link-hover-color: darken($link-color, 20);

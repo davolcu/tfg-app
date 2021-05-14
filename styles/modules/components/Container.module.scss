@@ -1,0 +1,32 @@
+// Colors of the application
+@import '../../style-guide/colors';
+@import '../../style-guide/sizes';
+// Mixins of the application
+@import '../../style-guide/mixins';
+
+.container {
+    width: 100%;
+    max-width: 1440px;
+    margin: 20px 15px;
+    background-color: $ternary-color;
+    border: 1px solid $border-color;
+    border-radius: 4px;
+
+    &__header {
+        border-bottom: 1px solid $border-color;
+    }
+
+    &__header,
+    &__body {
+        padding: 20px 25px;
+    }
+
+    &__title {
+        @include container-title-element;
+    }
+
+    &__subtitle {
+        font-size: $common-size;
+        line-height: 1;
+    }
+}

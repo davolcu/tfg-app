@@ -7,7 +7,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 // Interfaces of the component
 import { IDropdown } from '@/interfaces/components';
 // Custom imports
-import styles from '@/styles/modules/Dropdown.module.scss';
+import styles from '@/styles/modules/components/Dropdown.module.scss';
 
 const Dropdown: FunctionComponent<IDropdown> = ({ options }) => {
     // Update the display of the dropdown from the custom hook

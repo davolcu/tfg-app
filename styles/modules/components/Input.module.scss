@@ -1,0 +1,15 @@
+// Mixins of the application
+@import '../../style-guide/mixins';
+
+.input {
+    display: flex;
+    flex-direction: column;
+
+    &__label {
+        @include label-element;
+    }
+
+    &__element {
+        @include input-element;
+    }
+}
