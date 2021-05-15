@@ -1,6 +1,7 @@
 // Out of the box imports
-import { FunctionComponent } from 'react';
+import { FunctionComponent, useState } from 'react';
 import { GetServerSideProps } from 'next';
+import CKEditor from 'ckeditor4-react';
 // Interfaces of the component
 import { IEntityList } from '@/interfaces/pages';
 // Custom imports
@@ -35,13 +36,19 @@ export const getServerSideProps: GetServerSideProps = async (context) => {
 };
 
 const EntityList: FunctionComponent<IEntityList> = ({ token, params }) => {
-    console.log(params);
+    const [datum, setDatum] = useState('');
+    console.log(datum);
+
     return (
         <AuthPage token={token} pageProps={pageProps}>
             <main className={styles.profile}>
                 <NavigationBar breadcrumbs={breadcrumbs} />
                 <Container title={container.title} subtitle={container.subtitle}>
-                    <ProfileUserForm />
+                    <CKEditor
+                        config={{ language: 'en' }}
+                        data={datum}
+                        onChange={(evt: any) => setDatum(evt.editor.getData())}
+                    />
                 </Container>
             </main>
         </AuthPage>
