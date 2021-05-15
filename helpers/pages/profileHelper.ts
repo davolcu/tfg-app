@@ -10,6 +10,12 @@ export const constants = {
         title: 'Edit Account Settings',
         subtitle: 'From here you can edit your profile information and customize your account settings.',
     },
+    PROFILE_ATTRIBUTES_MAPPING: {
+        name: 'name',
+        nickname: 'nickname',
+        email: 'email',
+        phone: 'phone_number',
+    },
 };
 
 export const strings = {
@@ -21,4 +27,5 @@ export const strings = {
     emailLabel: 'User Email*',
     phonePlaceholder: 'Introduce your Phone',
     phoneLabel: 'User Phone',
+    userUpdatedSuccessfully: 'Your user data has been updated successfully',
 };

@@ -7,3 +7,8 @@ export interface IHomepage {
 export interface IProfile {
     token: string;
 }
+
+// Interface for the Profile view
+export interface IEntityList {
+    token: string;
+}

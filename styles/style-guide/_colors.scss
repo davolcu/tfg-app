@@ -15,8 +15,9 @@ $layout-color: darken($ternary-color, 10%);
 // Aplication's elements colors
 ////////////////////////////////////
 
-// Border color
+// Misc colors
 $border-color: #ccc;
+$success-color: #4cae4c;
 // Inputs
 $input-border-color: $border-color;
 $input-placeholder-color: darken($border-color, 30%);
@@ -24,10 +25,13 @@ $input-placeholder-color: darken($border-color, 30%);
 $primary-button-color: $primary-color;
 $primary-button-text-color: $ternary-color;
 $primary-button-color-hover: lighten($primary-color, 20);
+$confirm-button-color: $success-color;
+$confirm-button-text-color: $ternary-color;
+$confirm-button-color-hover: darken($success-color, 10);
 // Toasts
 $toast-color: $primary-text-color;
 $toast-text-color: $ternary-color;
-$toast-success-border-color: #4cae4c;
+$toast-success-border-color: $success-color;
 $toast-error-border-color: #d5403b;
 $toast-warning-border-color: #f49d21;
 // Dropdowns

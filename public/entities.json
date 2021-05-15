@@ -1,0 +1,72 @@
+{
+    "NavItem": {
+        "id": "nav-item",
+        "name": "Navigation Item",
+        "attributeList": [
+            {
+                "name": "id",
+                "type": "text"
+            },
+            {
+                "name": "name",
+                "type": "text"
+            },
+            {
+                "name": "link",
+                "type": "text"
+            },
+            {
+                "name": "style",
+                "type": "text"
+            }
+        ]
+    },
+    "SocialMedia": {
+        "id": "social-media",
+        "name": "Social Media",
+        "attributeList": [
+            {
+                "name": "id",
+                "type": "text"
+            },
+            {
+                "name": "name",
+                "type": "text"
+            },
+            {
+                "name": "link",
+                "type": "text"
+            },
+            {
+                "name": "fa-key",
+                "type": "text"
+            },
+            {
+                "name": "style",
+                "type": "text"
+            }
+        ]
+    },
+    "LegalBlock": {
+        "id": "legal-block",
+        "name": "Legal Block",
+        "attributeList": [
+            {
+                "name": "id",
+                "type": "text"
+            },
+            {
+                "name": "name",
+                "type": "text"
+            },
+            {
+                "name": "link",
+                "type": "text"
+            },
+            {
+                "name": "content",
+                "type": "editor"
+            }
+        ]
+    }
+}

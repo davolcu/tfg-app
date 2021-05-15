@@ -12,12 +12,15 @@ import { createToast } from '@/utils/utils';
 import { populateUser } from '@/utils/services/cognitoUtils';
 
 // Create the context for the auth pages
-const contextDefaultValue: IAuthPageContext = { user: {}, loaded: false };
+const contextDefaultValue: IAuthPageContext = { user: {}, setUser: () => ({}), loaded: false };
 const AuthPageContext = createContext<IAuthPageContext>(contextDefaultValue);
 
 const AuthPage: FunctionComponent<IAuthPage> = ({ children, token, pageProps, showSidebar = true }) => {
     const [user, setUser] = useState({ token });
     const [loaded, setLoaded] = useState(false);
+
+    // Handler to update the user from any other component which implements the context
+    const updateUserHandler = (params: object) => setUser({ ...user, ...params });
 
     // Get the user given its token and the current context in an async way
     useEffect(() => {
@@ -35,7 +38,7 @@ const AuthPage: FunctionComponent<IAuthPage> = ({ children, token, pageProps, sh
     }, []);
 
     return (
-        <AuthPageContext.Provider value={{ user, loaded }}>
+        <AuthPageContext.Provider value={{ user, setUser: updateUserHandler, loaded }}>
             <Page {...pageProps}>
                 <Header />
                 {showSidebar && <Sidebar />}

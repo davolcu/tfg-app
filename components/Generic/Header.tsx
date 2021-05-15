@@ -15,7 +15,7 @@ const { DROPDOWN_OPTIONS: options } = constants;
 const Header = () => {
     const { user, loaded } = useContext(AuthPageContext);
     const { picture = '/icons/no-avatar-header.svg' } = user;
-    const name = user.name ?? user.nickname ?? user.email ?? '';
+    const name = user.name || user.nickname || user.email || '';
 
     return (
         <header className={styles.header}>

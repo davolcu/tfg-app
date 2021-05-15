@@ -44,6 +44,6 @@ export const signOut = () => {
     if (user) {
         user.signOut();
         expireUserCookie();
-        location.href = '/login';
+        location.href = '/logout';
     }
 };

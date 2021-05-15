@@ -26,6 +26,7 @@ export interface IUser {
 // Interface for the AuthPage context
 export interface IAuthPageContext {
     user: IUser;
+    setUser: Function;
     loaded: boolean;
 }
 

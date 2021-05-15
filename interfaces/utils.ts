@@ -19,3 +19,8 @@ export interface IFader {
     display?: string;
     timer?: number;
 }
+
+// Interface for the Parser instance
+export interface IParser {
+    [key: string]: string;
+}
