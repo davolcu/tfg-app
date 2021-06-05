@@ -5,17 +5,28 @@ import { GetServerSideProps } from 'next';
 import styles from '@/styles/modules/pages/Login.module.scss';
 import Page from '@/components/Placeholder/Page';
 import { signIn } from '@/services/login';
-import { getUserCookie, setClientCookie } from '@/services/cookies';
+import { getUserCookie, getProjectCookie, setClientCookie } from '@/services/cookies';
 import { createToast } from '@/utils/utils';
 
 export const getServerSideProps: GetServerSideProps = async (context) => {
     // Get the user's cookie based on the request
-    const userToken = getUserCookie(context);
+    const token = getUserCookie(context);
 
-    if (userToken) {
+    if (token) {
+        const projectId = getProjectCookie(context);
+
+        if (projectId) {
+            return {
+                redirect: {
+                    destination: '/',
+                    permanent: false,
+                },
+            };
+        }
+
         return {
             redirect: {
-                destination: '/',
+                destination: '/profile',
                 permanent: false,
             },
         };
@@ -42,11 +53,21 @@ const Login = () => {
     const signInHandler = () => {
         signIn(email, password)
             .then((data) => {
-                const jwtToken = data.getIdToken().getJwtToken();
+                const userData = data.getIdToken();
+                // Extract the token and the project id from the user data if possible
+                const jwtToken = userData.getJwtToken();
+                const userProject = userData.payload['custom:projectId'];
 
                 if (jwtToken) {
                     setClientCookie('jwtToken', jwtToken);
-                    location.href = '/';
+
+                    if (userProject) {
+                        setClientCookie('userProject', userProject);
+                        location.href = '/';
+                        return;
+                    }
+
+                    location.href = '/profile';
                 }
             })
             .catch((error: Error) => {

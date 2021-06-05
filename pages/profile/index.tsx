@@ -9,15 +9,16 @@ import NavigationBar from '@/components/Generic/NavigationBar';
 import Container from '@/components/Generic/Container';
 import { AuthPage } from '@/components/Placeholder/AuthPage';
 import ProfileUserForm from '@/components/Profile/ProfileUserForm';
-import { getUserCookie } from '@/services/cookies';
-import { constants } from '@/helpers/pages/profileHelper';
-
-// Get the static needed data from the constants
-const { PROFILE_PROPS: pageProps, PROFILE_BREADCRUMBS: breadcrumbs, PROFILE_CONTAINER: container } = constants;
+import { getUserCookie, getProjectCookie } from '@/services/cookies';
+import { getEntities } from '@/services/entities';
+import { setToken } from '@/services/axios';
+import { getProfilePageData } from '@/utils/pages/profileUtils';
+import { getSidebarItems } from '@/utils/components/sidebarUtils';
 
 export const getServerSideProps: GetServerSideProps = async (context) => {
     // Get the user's cookie based on the request
     const token = getUserCookie(context);
+    const userProject = getProjectCookie(context);
 
     if (!token) {
         return {
@@ -28,17 +29,30 @@ export const getServerSideProps: GetServerSideProps = async (context) => {
         };
     }
 
-    return {
-        props: { token },
-    };
+    try {
+        const props = { token };
+
+        if (userProject) {
+            setToken(token);
+            const data = await getEntities(userProject);
+            Object.assign(props, { data });
+        }
+
+        return { props };
+    } catch (error) {
+        return { notFound: true };
+    }
 };
 
-const Home: FunctionComponent<IProfile> = ({ token }) => {
+const Home: FunctionComponent<IProfile> = ({ token, data }) => {
+    const { pageProps, breadcrumbs, title, subtitle } = getProfilePageData();
+    const items = getSidebarItems(data);
+
     return (
-        <AuthPage token={token} pageProps={pageProps}>
+        <AuthPage token={token} pageProps={pageProps} items={items}>
             <main className={styles.profile}>
                 <NavigationBar breadcrumbs={breadcrumbs} />
-                <Container title={container.title} subtitle={container.subtitle}>
+                <Container title={title} subtitle={subtitle}>
                     <ProfileUserForm />
                 </Container>
             </main>

@@ -19,7 +19,9 @@ const Header = () => {
 
     return (
         <header className={styles.header}>
-            <img className={styles.header__logo} src='/images/logo.png' alt='Next Logo' />
+            <a href='/' className={styles.header__link}>
+                <img className={styles.header__logo} src='/images/logo.png' alt='Next Logo' />
+            </a>
 
             {loaded && (
                 <div className={`${styles.header__dropdown + ' ' + styles.header__dropdown}`}>

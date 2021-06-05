@@ -36,6 +36,7 @@ export const getUserCookie = ({ req, res }: GetServerSidePropsContext) => {
 
     if (expireToken !== undefined) {
         deleteCookie('userToken', res);
+        deleteCookie('userProject', res);
         deleteCookie('expireToken', res);
         return;
     }
@@ -49,7 +50,25 @@ export const getUserCookie = ({ req, res }: GetServerSidePropsContext) => {
     return userToken;
 };
 
+// Gets the user project token from the cookies
+export const getProjectCookie = ({ req, res }: GetServerSidePropsContext) => {
+    const { userProject, expireProject } = nookies.get({ req });
+
+    if (expireProject !== undefined) {
+        deleteCookie('userProject', res);
+        deleteCookie('expireProject', res);
+        return;
+    }
+
+    return userProject;
+};
+
 // Forces the user token cookie to expire
 export const expireUserCookie = () => {
     setClientCookie('expireToken', '');
+};
+
+// Forces the user project cookie to expire
+export const expireUserProject = () => {
+    setClientCookie('expireProject', '');
 };

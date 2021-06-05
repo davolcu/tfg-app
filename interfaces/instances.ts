@@ -18,7 +18,8 @@ export interface IHeaderDropdownOption {
 // Interface for the Sidebar item
 export interface ISidebarItem {
     id: string;
-    image: string;
+    value: string;
+    link: string;
 }
 
 // Interface for the Navigation bar Breadcrumbs
@@ -79,4 +80,9 @@ export interface IEntityData {
 // Interface for the Entity List request query
 export interface IEntityQuery {
     [key: string]: string;
+}
+
+// Interface for the Entities of the user's project
+export interface IEntities {
+    [key: string]: IMetadata;
 }

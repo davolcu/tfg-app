@@ -7,11 +7,10 @@
 .sidebar {
     position: fixed;
     top: 55px;
-    width: 80px;
+    width: 170px;
     height: calc(100vh - 55px);
     display: flex;
     flex-direction: column;
-    align-items: center;
     background-color: $secondary-color;
 
     &__items {
@@ -19,12 +18,19 @@
     }
 
     &__item {
-        padding: 25px;
+        font-size: $common-size;
+        font-weight: bold;
+        color: $ternary-color;
         cursor: pointer;
         transition: background-color 150ms linear;
 
         &:hover {
             background-color: $primary-color;
         }
+    }
+
+    &__link {
+        display: flex;
+        padding: 15px 10px;
     }
 }

@@ -1,7 +1,14 @@
 // Out of the box imports
 import { ReactNode } from 'react';
 // Custom imports
-import { IEntityData, IEntitiesData, IEntityQuery, IBreadcrumb, IHeaderDropdownOption } from '@/interfaces/instances';
+import {
+    IEntityData,
+    IEntitiesData,
+    IEntityQuery,
+    IBreadcrumb,
+    IHeaderDropdownOption,
+    ISidebarItem,
+} from '@/interfaces/instances';
 
 // Interface for the Page component
 export interface IPage {
@@ -17,6 +24,7 @@ export interface IAuthPage {
     token: string;
     showSidebar?: boolean;
     pageProps?: object;
+    items?: ISidebarItem[];
 }
 
 // Interface for the Dropdown component
@@ -34,6 +42,11 @@ export interface IContainer {
     children: ReactNode;
     title?: string;
     subtitle?: string;
+}
+
+// Interface for the Sidebar component
+export interface ISidebar {
+    items: ISidebarItem[];
 }
 
 // Interface for the Loader component
@@ -70,6 +83,7 @@ export interface IEntitiesPage {
     token: string;
     query: IEntityQuery;
     data: IEntitiesData;
+    items: ISidebarItem[];
 }
 
 // Interface for the EntitiesCount component
@@ -96,4 +110,11 @@ export interface IEntitiesForm {
 // Interface for the IEntityForm component
 export interface IEntityForm {
     data: IEntityData;
+}
+
+// Interface for the IHomeCard component
+export interface IHomeCard {
+    value: string;
+    link: string;
+    description?: string;
 }

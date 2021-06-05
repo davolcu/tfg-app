@@ -16,7 +16,7 @@ import { populateUser } from '@/utils/services/cognitoUtils';
 const contextDefaultValue: IAuthPageContext = { user: {}, setUser: () => ({}), loaded: false };
 const AuthPageContext = createContext<IAuthPageContext>(contextDefaultValue);
 
-const AuthPage: FunctionComponent<IAuthPage> = ({ children, token, pageProps, showSidebar = true }) => {
+const AuthPage: FunctionComponent<IAuthPage> = ({ children, token, pageProps, items, showSidebar = true }) => {
     const [user, setUser] = useState({ token });
     const [loaded, setLoaded] = useState(false);
 
@@ -42,7 +42,7 @@ const AuthPage: FunctionComponent<IAuthPage> = ({ children, token, pageProps, sh
         <AuthPageContext.Provider value={{ user, setUser: userUpdateHandler, loaded }}>
             <Page {...pageProps}>
                 <Header />
-                {showSidebar && <Sidebar />}
+                {showSidebar && !!items?.length && <Sidebar items={items} />}
                 {children}
             </Page>
         </AuthPageContext.Provider>

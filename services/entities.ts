@@ -1,6 +1,15 @@
 // Custom imports
 import axios from '@/services/axios';
 
+// Get the entities from user's project
+export const getEntities = (bucket: string = 'tfg') => {
+    return axios.get(`/entities?bucket=${bucket}`).then(({ status, data }) => {
+        if (status === 200) {
+            return data;
+        }
+    });
+};
+
 // Get the data of a given type of entity
 export const getEntityInstances = (id: string, bucket: string = 'tfg') => {
     return axios.get(`/entities/${id}?bucket=${bucket}`).then(({ status, data }) => {

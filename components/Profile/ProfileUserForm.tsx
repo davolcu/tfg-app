@@ -4,6 +4,7 @@ import { useContext, useState, useEffect } from 'react';
 import styles from '@/styles/modules/pages/Profile.module.scss';
 import { strings } from '@/helpers/pages/profileHelper';
 import { updateUser } from '@/services/profile';
+import { expireUserProject, setClientCookie } from '@/services/cookies';
 import { createToast } from '@/utils/utils';
 import { mapProfileAttributes } from '@/utils/pages/profileUtils';
 import { AuthPageContext } from '@/components/Placeholder/AuthPage';
@@ -16,14 +17,15 @@ const ProfileUserForm = () => {
     const [name, setName] = useState('');
     const [nickname, setNickname] = useState('');
     const [email, setEmail] = useState('');
-    const [phone, setPhone] = useState('');
+    const [projectId, setProjectId] = useState('');
 
     // Handler to submit the profile form
     const profileSubmitHandler = () => {
-        const params = mapProfileAttributes({ name, nickname, email, phone });
+        const params = mapProfileAttributes({ name, nickname, email, projectId });
 
         updateUser(user.token, params)
             .then((token) => {
+                projectId ? setClientCookie('userProject', projectId) : expireUserProject();
                 setUser({ ...params, token });
                 createToast({ text: strings.user_updated_successfully, type: 'success', duration: 3500 });
             })
@@ -39,7 +41,7 @@ const ProfileUserForm = () => {
         setName(user.name ?? '');
         setNickname(user.nickname ?? '');
         setEmail(user.email ?? '');
-        setPhone(user.phone_number ?? '');
+        setProjectId(user['custom:projectId'] ?? '');
     }, [user]);
 
     if (!loaded) {
@@ -62,10 +64,10 @@ const ProfileUserForm = () => {
                 setter={setEmail}
             />
             <Input
-                placeholder={strings.phone_placeholder}
-                label={strings.phone_label}
-                value={phone}
-                setter={setPhone}
+                placeholder={strings.project_placeholder}
+                label={strings.project_label}
+                value={projectId}
+                setter={setProjectId}
             />
 
             <button type='button' onClick={() => profileSubmitHandler()} className={styles.profile__button}>
