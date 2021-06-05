@@ -1,0 +1,62 @@
+{
+    "NavItem": {
+        "id": "nav-items",
+        "name": "Navigation Item",
+        "description": "Generate a Navigation Item to add a new Header element",
+        "attributeList": [
+            {
+                "name": "name",
+                "type": "text",
+                "required": true
+            },
+            {
+                "name": "link",
+                "type": "text"
+            },
+            {
+                "name": "style",
+                "type": "text"
+            }
+        ]
+    },
+    "SocialMedia": {
+        "id": "social-medias",
+        "name": "Social Media",
+        "description": "Generate a Social Media to add a new social media link on the Footer",
+        "attributeList": [
+            {
+                "name": "name",
+                "type": "text",
+                "required": true
+            },
+            {
+                "name": "link",
+                "type": "text"
+            },
+            {
+                "name": "style",
+                "type": "text"
+            }
+        ]
+    },
+    "LegalBlock": {
+        "id": "legal-blocks",
+        "name": "Legal Block",
+        "description": "Generate a Legal Block to add a new legal section",
+        "attributeList": [
+            {
+                "name": "name",
+                "type": "text",
+                "required": true
+            },
+            {
+                "name": "link",
+                "type": "text"
+            },
+            {
+                "name": "content",
+                "type": "editor"
+            }
+        ]
+    }
+}

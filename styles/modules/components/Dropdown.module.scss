@@ -1,0 +1,40 @@
+// Colors of the application
+@import '../../style-guide/colors';
+@import '../../style-guide/sizes';
+
+.dropdown {
+    display: none;
+    list-style: none;
+    position: absolute;
+    top: calc(100% + 8px);
+    right: 0;
+    width: max-content;
+    flex-direction: column;
+    padding: 5px 0;
+    color: $primary-text-color;
+    background-color: $ternary-color;
+    border: 1px solid $border-color;
+    border-radius: 4px;
+    box-shadow: 0 5px 5px rgb(0 0 0 / 8%);
+    z-index: 2;
+
+    &__option {
+        width: 100%;
+        display: flex;
+        align-items: center;
+        font-size: $common-size;
+        font-weight: bold;
+        color: $primary-text-color;
+        padding: 5px 25px;
+        transition: all 0.2s ease-in;
+
+        &:hover {
+            background-color: $dropdown-option-hover-color;
+        }
+    }
+
+    &__icon {
+        width: 14px;
+        margin-right: 10px;
+    }
+}

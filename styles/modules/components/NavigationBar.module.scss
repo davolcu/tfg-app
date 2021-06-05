@@ -1,0 +1,45 @@
+// Colors of the application
+@import '../../style-guide/colors';
+@import '../../style-guide/sizes';
+// Mixins of the application
+@import '../../style-guide/mixins';
+
+.navigation {
+    position: sticky;
+    width: 100%;
+    height: 55px;
+    display: inline-flex;
+    padding: 15px;
+    color: $primary-text-color;
+    background-color: $ternary-color;
+    border-top: 1px solid $border-color;
+    border-bottom: 1px solid $border-color;
+
+    &__link,
+    &__text {
+        display: flex;
+        align-items: center;
+    }
+
+    &__link,
+    &__text,
+    &__arrow {
+        font-size: $common-size;
+        font-weight: bold;
+    }
+
+    &__link {
+        @include link-element;
+    }
+
+    &__arrow {
+        margin: 0 5px;
+    }
+
+    &__image {
+        width: 25px;
+        height: 25px;
+        object-fit: contain;
+        margin-right: 5px;
+    }
+}

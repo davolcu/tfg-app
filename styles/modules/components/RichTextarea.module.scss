@@ -1,0 +1,12 @@
+// Mixins of the application
+@import '../../style-guide/mixins';
+
+.textarea {
+    display: flex;
+    flex-direction: column;
+    grid-column: span 2;
+
+    &__label {
+        @include label-element;
+    }
+}

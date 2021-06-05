@@ -5,10 +5,33 @@
 /////////////////////////////////////////////
 // Standard patterns for the html elements
 /////////////////////////////////////////////
+
+@mixin main-element {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-left: 80px;
+    padding-top: 55px;
+    width: calc(100vw - 80px);
+    height: 100vh;
+    color: $primary-text-color;
+    background-color: $layout-color;
+}
+
 @mixin title-element {
     font-size: $title-size;
     font-weight: bold;
+    line-height: 1;
     margin-bottom: 15px;
+    color: $primary-text-color;
+}
+
+@mixin container-title-element {
+    font-size: $container-title-size;
+    font-weight: bold;
+    line-height: 1;
+    margin-bottom: 5px;
+    color: $primary-text-color;
 }
 
 @mixin input-element {
@@ -18,6 +41,7 @@
     padding: 7px 12px;
     border: 1px solid $input-border-color;
     border-radius: 3px;
+    outline-color: $primary-button-color-hover;
 
     &::placeholder {
         color: $input-placeholder-color;
@@ -29,17 +53,45 @@
     }
 }
 
-@mixin primary-button {
+@mixin label-element {
+    font-size: $common-size;
+    font-weight: bold;
+    color: $primary-text-color;
+    margin-bottom: 5px;
+}
+
+@mixin link-element {
+    color: $link-color;
+    cursor: pointer;
+    transition: color 200ms linear;
+    text-decoration: none !important;
+
+    &:hover {
+        color: $link-hover-color;
+    }
+}
+
+@mixin button {
     font-size: $common-size;
     font-weight: bold;
     line-height: 18px;
-    color: $primary-button-text-color;
     padding: 7px 12px;
-    background-color: $primary-button-color;
-    border: 1px solid $primary-button-color;
     border-radius: 3px;
     transition: all 150ms ease-in;
     cursor: pointer;
+
+    &:disabled {
+        cursor: not-allowed;
+        opacity: 0.8;
+    }
+}
+
+@mixin primary-button {
+    @include button;
+    color: $primary-button-text-color;
+    background-color: $primary-button-color;
+    border: 1px solid $primary-button-color;
+    outline-color: $primary-button-color-hover;
 
     &:hover:not(:disabled) {
         background-color: $primary-button-color-hover;
@@ -51,9 +103,61 @@
     &:visited {
         border-color: $primary-button-color-hover;
     }
+}
 
-    &:disabled {
-        cursor: not-allowed;
-        opacity: 0.8;
+@mixin primary-inverse-button {
+    @include button;
+    color: $primary-inverse-button-text-color;
+    background-color: $primary-inverse-button-color;
+    border: 1px solid $primary-inverse-button-text-color;
+    outline-color: $primary-inverse-button-color-hover;
+
+    &:hover:not(:disabled) {
+        background-color: $primary-inverse-button-color-hover;
+        border-color: $primary-inverse-button-text-color;
+    }
+
+    &:active,
+    &:focus,
+    &:visited {
+        border-color: $primary-inverse-button-text-color;
+    }
+}
+
+@mixin confirm-button {
+    @include button;
+    color: $confirm-button-text-color;
+    background-color: $confirm-button-color;
+    border: 1px solid $confirm-button-color;
+    outline-color: $confirm-button-color-hover;
+
+    &:hover:not(:disabled) {
+        background-color: $confirm-button-color-hover;
+        border-color: $confirm-button-color-hover;
+    }
+
+    &:active,
+    &:focus,
+    &:visited {
+        border-color: $confirm-button-color-hover;
+    }
+}
+
+@mixin cancel-button {
+    @include button;
+    color: $cancel-button-text-color;
+    background-color: $cancel-button-color;
+    border: 1px solid $cancel-button-color;
+    outline-color: $cancel-button-color-hover;
+
+    &:hover:not(:disabled) {
+        background-color: $cancel-button-color-hover;
+        border-color: $cancel-button-color-hover;
+    }
+
+    &:active,
+    &:focus,
+    &:visited {
+        border-color: $cancel-button-color-hover;
     }
 }

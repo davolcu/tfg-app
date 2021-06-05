@@ -1,0 +1,6 @@
+// Mixins of the application
+@import '../../style-guide/mixins';
+
+.home {
+    @include main-element;
+}

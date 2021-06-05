@@ -1,0 +1,20 @@
+// Mixins of the application
+@import '../../style-guide/mixins';
+
+.profile {
+    @include main-element;
+
+    &__container {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        column-gap: 25px;
+        row-gap: 20px;
+    }
+
+    &__button {
+        @include confirm-button;
+        width: max-content;
+        justify-self: center;
+        grid-column: span 2;
+    }
+}

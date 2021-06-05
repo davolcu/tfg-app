@@ -1,18 +1,12 @@
 // Out of the box imports
-import { FunctionComponent, ReactNode } from 'react';
+import { FunctionComponent } from 'react';
 import Head from 'next/head';
+// Interfaces of the component
+import { IPage } from '@/interfaces/components';
+// Custom imports
+import { getFormattedTitle } from '@/utils/components/pageUtils';
 
-// Page utils
-import { getFormattedTitle } from '@/utils/components/page';
-
-type Props = {
-    children: ReactNode;
-    title?: string;
-    description?: string;
-    keywords?: string;
-};
-
-const Page: FunctionComponent<Props> = ({ children, title, description, keywords }) => {
+const Page: FunctionComponent<IPage> = ({ children, title, description, keywords }) => {
     const formattedTitle = getFormattedTitle(title);
 
     return (

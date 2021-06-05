@@ -1,5 +1,5 @@
 // Interface for the toast cration method
-export interface iToast {
+export interface IToast {
     text: string;
     type?: 'success' | 'warning' | 'error';
     extraClasses?: string[];
@@ -7,14 +7,14 @@ export interface iToast {
 }
 
 // Interface for the toggler method
-export interface iToggler {
+export interface IToggler {
     element: HTMLElement;
     display?: string;
     timer?: number;
 }
 
 // Interface for the fader methods
-export interface iFader {
+export interface IFader {
     selector: string;
     display?: string;
     timer?: number;

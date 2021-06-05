@@ -1,44 +1,49 @@
+// Out of the box imports
+import { CognitoUserSession, ISignUpResult } from 'amazon-cognito-identity-js';
 // Custom imports
-import { getCognitoUserPool, getCognitoUser, getAuthDetails, getUserAttributes } from '@/services/cognitoUserPool';
-import { setClientCookie } from '@/services/cookies';
-import { createToast } from '@/utils/utils';
+import { getCognitoUserPool, getCognitoUser, getAuthDetails, getCurrentUser } from '@/services/cognito';
+import { expireUserCookie } from '@/services/cookies';
+import { populateUserAttributes } from '@/utils/services/cognitoUtils';
 
 // Instance of the cognito user pool
 const cognitoUserPool = getCognitoUserPool();
 
 // Sign up a user
-export const signUp = (email: string, password: string, params: object) => {
-    const userAttributes = getUserAttributes(params);
+export const signUp = async (email: string, password: string, params: object) => {
+    const userAttributes = populateUserAttributes(params);
 
-    cognitoUserPool.signUp(email, password, userAttributes, [], (err, data) => {
-        if (err) {
-            console.error(err);
-            createToast({ text: err.message, type: 'error', duration: 3500 });
-            return;
-        }
+    return await new Promise<ISignUpResult>((resolve, reject) => {
+        cognitoUserPool.signUp(email, password, userAttributes, [], (error, data) => {
+            if (error) {
+                reject(error);
+                return;
+            }
 
-        location.href = '/profile';
+            resolve(data!);
+        });
     });
 };
 
 // Sign in with real user credentials
-export const signIn = (email: string, password: string) => {
+export const signIn = async (email: string, password: string) => {
     const user = getCognitoUser(email, cognitoUserPool);
     const authDetails = getAuthDetails(email, password);
 
-    user.authenticateUser(authDetails, {
-        onSuccess: (data) => {
-            const jwtToken = data.getIdToken().getJwtToken();
-
-            if (jwtToken) {
-                setClientCookie('jwtToken', jwtToken);
-            }
-
-            location.href = '/';
-        },
-        onFailure: (err) => {
-            console.error(err);
-            createToast({ text: err.message, type: 'error', duration: 3500 });
-        },
+    return await new Promise<CognitoUserSession>((resolve, reject) => {
+        user.authenticateUser(authDetails, {
+            onSuccess: (data: CognitoUserSession) => resolve(data),
+            onFailure: (error: Error) => reject(error),
+        });
     });
+};
+
+// Sign out from the current user
+export const signOut = () => {
+    const user = getCurrentUser();
+
+    if (user) {
+        user.signOut();
+        expireUserCookie();
+        location.href = '/logout';
+    }
 };
