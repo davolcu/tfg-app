@@ -5,7 +5,7 @@
 @import '../../style-guide/mixins';
 
 .container {
-    width: 100%;
+    width: calc(100% - 40px);
     max-width: 1440px;
     margin: 20px 15px;
     background-color: $ternary-color;
@@ -23,6 +23,10 @@
 
     &__title {
         @include container-title-element;
+
+        &:only-child {
+            margin-bottom: 0;
+        }
     }
 
     &__subtitle {

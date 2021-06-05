@@ -2,7 +2,7 @@
 import { CognitoUserAttribute } from 'amazon-cognito-identity-js';
 
 // Given some params populate the cognito user attributes list
-export const populateUserAttributes = (params: Object) => {
+export const populateUserAttributes = (params: object) => {
     const userAttributes: CognitoUserAttribute[] = [];
 
     Object.entries(params).forEach(([key, value]) => {

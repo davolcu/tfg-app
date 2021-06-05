@@ -1,5 +1,5 @@
 // Interfaces of the component
-import { ISidebarItem } from '@/interfaces/components';
+import { ISidebarItem } from '@/interfaces/instances';
 // Custom imports
 import styles from '@/styles/modules/components/Sidebar.module.scss';
 import { constants } from '@/helpers/components/sidebarHelper';

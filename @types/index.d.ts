@@ -5,3 +5,4 @@ declare module '*.svg' {
 
 declare module 'react-lazy-load-image-component';
 declare module 'ckeditor4-react';
+declare module 'pluralize';

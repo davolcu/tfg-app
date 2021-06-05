@@ -1,6 +1,7 @@
 // Out of the box imports
 import { ReactNode } from 'react';
-import { IconDefinition } from '@fortawesome/free-solid-svg-icons';
+// Custom imports
+import { IEntityData, IEntitiesData, IEntityQuery, IBreadcrumb, IHeaderDropdownOption } from '@/interfaces/instances';
 
 // Interface for the Page component
 export interface IPage {
@@ -18,43 +19,9 @@ export interface IAuthPage {
     pageProps?: object;
 }
 
-// Interface for the User entity
-export interface IUser {
-    [key: string]: string;
-}
-
-// Interface for the AuthPage context
-export interface IAuthPageContext {
-    user: IUser;
-    setUser: Function;
-    loaded: boolean;
-}
-
-// Interface for the Header dropdown options
-export interface IHeaderDropdownOption {
-    id: string;
-    value: string;
-    icon?: IconDefinition;
-    callback?: Function;
-}
-
 // Interface for the Dropdown component
 export interface IDropdown {
     options: IHeaderDropdownOption[];
-}
-
-// Interface for the Sidebar item
-export interface ISidebarItem {
-    id: string;
-    image: string;
-}
-
-// Interface for the Navigation bar Breadcrumbs
-export interface IBreadcrumb {
-    id: string;
-    value: string;
-    link?: string;
-    image?: string;
 }
 
 // Interface for the Navigation bar component
@@ -85,5 +52,48 @@ export interface IInput {
     label?: string;
     placeholder?: string;
     id?: string;
+    style?: object;
     setter: Function;
+}
+
+// Interface for the RichTextarea component
+export interface IRichTextarea {
+    config?: object;
+    label?: string;
+    value?: string;
+    style?: object;
+    setter: Function;
+}
+
+// Interface for the EntitiesPage component
+export interface IEntitiesPage {
+    token: string;
+    query: IEntityQuery;
+    data: IEntitiesData;
+}
+
+// Interface for the EntitiesCount component
+export interface IEntitiesCount {
+    count: number;
+    name: string;
+}
+
+// Interface for the EntitiesEmpty component
+export interface IEntitiesEmpty {
+    name: string;
+}
+
+// Interface for the EntitiesList component
+export interface IEntitiesList {
+    data: IEntitiesData;
+}
+
+// Interface for the IEntitiesForm component
+export interface IEntitiesForm {
+    data: IEntitiesData;
+}
+
+// Interface for the IEntityForm component
+export interface IEntityForm {
+    data: IEntityData;
 }

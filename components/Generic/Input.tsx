@@ -15,16 +15,14 @@ const Input: FunctionComponent<IInput> = ({
     label,
     placeholder = '',
     id,
+    style,
     setter,
 }) => {
     // Handler to emit the value to the upper component
-    const inputChangeHandler = (target: HTMLInputElement) => {
-        const { value } = target;
-        setter(value);
-    };
+    const inputChangeHandler = (target: HTMLInputElement) => setter(target.value);
 
     return (
-        <div className={styles.input}>
+        <div className={styles.input} style={style}>
             {!!label && (
                 <label htmlFor={name} className={styles.input__label}>
                     {label}

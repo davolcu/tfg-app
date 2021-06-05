@@ -105,6 +105,25 @@
     }
 }
 
+@mixin primary-inverse-button {
+    @include button;
+    color: $primary-inverse-button-text-color;
+    background-color: $primary-inverse-button-color;
+    border: 1px solid $primary-inverse-button-text-color;
+    outline-color: $primary-inverse-button-color-hover;
+
+    &:hover:not(:disabled) {
+        background-color: $primary-inverse-button-color-hover;
+        border-color: $primary-inverse-button-text-color;
+    }
+
+    &:active,
+    &:focus,
+    &:visited {
+        border-color: $primary-inverse-button-text-color;
+    }
+}
+
 @mixin confirm-button {
     @include button;
     color: $confirm-button-text-color;
@@ -121,5 +140,24 @@
     &:focus,
     &:visited {
         border-color: $confirm-button-color-hover;
+    }
+}
+
+@mixin cancel-button {
+    @include button;
+    color: $cancel-button-text-color;
+    background-color: $cancel-button-color;
+    border: 1px solid $cancel-button-color;
+    outline-color: $cancel-button-color-hover;
+
+    &:hover:not(:disabled) {
+        background-color: $cancel-button-color-hover;
+        border-color: $cancel-button-color-hover;
+    }
+
+    &:active,
+    &:focus,
+    &:visited {
+        border-color: $cancel-button-color-hover;
     }
 }

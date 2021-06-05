@@ -1,0 +1,17 @@
+// Colors and sizes of the application
+@import '../../style-guide/colors';
+@import '../../style-guide/sizes';
+// Mixins of the application
+@import '../../style-guide/mixins';
+
+.entity {
+    @include main-element;
+
+    &__container {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        column-gap: 25px;
+        row-gap: 20px;
+        pointer-events: none;
+    }
+}

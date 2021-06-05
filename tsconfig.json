@@ -14,7 +14,8 @@
             "@/styles/*": [ "styles/*" ],
             "@/services/*": [ "services/*" ],
             "@/interfaces/*": [ "interfaces/*" ],
-            "@/hooks/*": [ "hooks/*" ]
+            "@/hooks/*": [ "hooks/*" ],
+            "@/icons/*": [ "public/icons/*" ]
         },
         "allowJs": true,
         "skipLibCheck": true,

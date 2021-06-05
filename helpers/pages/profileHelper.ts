@@ -19,13 +19,13 @@ export const constants = {
 };
 
 export const strings = {
-    namePlaceholder: 'Introduce your Name',
-    nameLabel: 'User Name',
-    nickPlaceholder: 'Introduce your Nickname',
-    nickLabel: 'User Nickname',
-    emailPlaceholder: 'Introduce your Email',
-    emailLabel: 'User Email*',
-    phonePlaceholder: 'Introduce your Phone',
-    phoneLabel: 'User Phone',
-    userUpdatedSuccessfully: 'Your user data has been updated successfully',
+    name_placeholder: 'Introduce your Name',
+    name_label: 'User Name',
+    nick_placeholder: 'Introduce your Nickname',
+    nick_label: 'User Nickname',
+    email_placeholder: 'Introduce your Email',
+    email_label: 'User Email*',
+    phone_placeholder: 'Introduce your Phone',
+    phone_label: 'User Phone',
+    user_updated_successfully: 'Your user data has been updated successfully',
 };

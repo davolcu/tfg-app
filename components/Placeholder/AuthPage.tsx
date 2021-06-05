@@ -1,7 +1,8 @@
 // Out of the box imports
 import { createContext, FunctionComponent, useEffect, useState } from 'react';
 // Interfaces of the component
-import { IAuthPage, IAuthPageContext } from '@/interfaces/components';
+import { IAuthPage } from '@/interfaces/components';
+import { IAuthPageContext } from '@/interfaces/contexts';
 // Custom imports
 import Page from '@/components/Placeholder/Page';
 import Header from '@/components/Generic/Header';
@@ -20,7 +21,7 @@ const AuthPage: FunctionComponent<IAuthPage> = ({ children, token, pageProps, sh
     const [loaded, setLoaded] = useState(false);
 
     // Handler to update the user from any other component which implements the context
-    const updateUserHandler = (params: object) => setUser({ ...user, ...params });
+    const userUpdateHandler = (params: object) => setUser({ ...user, ...params });
 
     // Get the user given its token and the current context in an async way
     useEffect(() => {
@@ -38,7 +39,7 @@ const AuthPage: FunctionComponent<IAuthPage> = ({ children, token, pageProps, sh
     }, []);
 
     return (
-        <AuthPageContext.Provider value={{ user, setUser: updateUserHandler, loaded }}>
+        <AuthPageContext.Provider value={{ user, setUser: userUpdateHandler, loaded }}>
             <Page {...pageProps}>
                 <Header />
                 {showSidebar && <Sidebar />}

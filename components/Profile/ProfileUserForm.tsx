@@ -25,7 +25,7 @@ const ProfileUserForm = () => {
         updateUser(user.token, params)
             .then((token) => {
                 setUser({ ...params, token });
-                createToast({ text: strings.userUpdatedSuccessfully, type: 'success', duration: 3500 });
+                createToast({ text: strings.user_updated_successfully, type: 'success', duration: 3500 });
             })
             .catch((error) => {
                 console.error(error);
@@ -48,15 +48,25 @@ const ProfileUserForm = () => {
 
     return (
         <section className={styles.profile__container}>
-            <Input placeholder={strings.namePlaceholder} label={strings.nameLabel} value={name} setter={setName} />
+            <Input placeholder={strings.name_placeholder} label={strings.name_label} value={name} setter={setName} />
             <Input
-                placeholder={strings.nickPlaceholder}
-                label={strings.nickLabel}
+                placeholder={strings.nick_placeholder}
+                label={strings.nick_label}
                 value={nickname}
                 setter={setNickname}
             />
-            <Input placeholder={strings.emailPlaceholder} label={strings.emailLabel} value={email} setter={setEmail} />
-            <Input placeholder={strings.phonePlaceholder} label={strings.phoneLabel} value={phone} setter={setPhone} />
+            <Input
+                placeholder={strings.email_placeholder}
+                label={strings.email_label}
+                value={email}
+                setter={setEmail}
+            />
+            <Input
+                placeholder={strings.phone_placeholder}
+                label={strings.phone_label}
+                value={phone}
+                setter={setPhone}
+            />
 
             <button type='button' onClick={() => profileSubmitHandler()} className={styles.profile__button}>
                 Update

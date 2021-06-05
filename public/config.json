@@ -1,15 +1,13 @@
 {
     "NavItem": {
-        "id": "nav-item",
+        "id": "nav-items",
         "name": "Navigation Item",
+        "description": "Generate a Navigation Item to add a new Header element",
         "attributeList": [
             {
-                "name": "id",
-                "type": "text"
-            },
-            {
                 "name": "name",
-                "type": "text"
+                "type": "text",
+                "required": true
             },
             {
                 "name": "link",
@@ -22,23 +20,17 @@
         ]
     },
     "SocialMedia": {
-        "id": "social-media",
+        "id": "social-medias",
         "name": "Social Media",
+        "description": "Generate a Social Media to add a new social media link on the Footer",
         "attributeList": [
             {
-                "name": "id",
-                "type": "text"
-            },
-            {
                 "name": "name",
-                "type": "text"
+                "type": "text",
+                "required": true
             },
             {
                 "name": "link",
-                "type": "text"
-            },
-            {
-                "name": "fa-key",
                 "type": "text"
             },
             {
@@ -48,16 +40,14 @@
         ]
     },
     "LegalBlock": {
-        "id": "legal-block",
+        "id": "legal-blocks",
         "name": "Legal Block",
+        "description": "Generate a Legal Block to add a new legal section",
         "attributeList": [
             {
-                "name": "id",
-                "type": "text"
-            },
-            {
                 "name": "name",
-                "type": "text"
+                "type": "text",
+                "required": true
             },
             {
                 "name": "link",
