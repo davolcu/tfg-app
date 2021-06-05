@@ -14,7 +14,7 @@ export const constants = {
         name: 'name',
         nickname: 'nickname',
         email: 'email',
-        phone: 'phone_number',
+        projectId: 'custom:projectId',
     },
 };
 
@@ -25,7 +25,7 @@ export const strings = {
     nick_label: 'User Nickname',
     email_placeholder: 'Introduce your Email',
     email_label: 'User Email*',
-    phone_placeholder: 'Introduce your Phone',
-    phone_label: 'User Phone',
+    project_placeholder: 'Introduce your Project Id',
+    project_label: 'User Project Id',
     user_updated_successfully: 'Your user data has been updated successfully',
 };

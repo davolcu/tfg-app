@@ -23,7 +23,7 @@ const contextDefaultValue: IEntitiesPageContext = {
 };
 const EntitiesPageContext = createContext<IEntitiesPageContext>(contextDefaultValue);
 
-const EntitiesPage: FunctionComponent<IEntitiesPage> = ({ token, query, data }) => {
+const EntitiesPage: FunctionComponent<IEntitiesPage> = ({ token, query, data, items }) => {
     const [entities, setEntities] = useState(data.Items);
     const [activeEntity, setActiveEntity] = useState(getActiveEntity(query, entities));
     const [mode, setMode] = useState(!!activeEntity ? 'form' : 'list');
@@ -60,7 +60,7 @@ const EntitiesPage: FunctionComponent<IEntitiesPage> = ({ token, query, data }) 
         <EntitiesPageContext.Provider
             value={{ mode, setMode, entities, setEntities, activeEntity, setActiveEntity: setActiveEntityHandler }}
         >
-            <AuthPage token={token} pageProps={pageProps}>
+            <AuthPage token={token} pageProps={pageProps} items={items}>
                 <main className={styles.entities}>
                     <NavigationBar breadcrumbs={breadcrumbs} />
                     <Container title={title} subtitle={subtitle}>

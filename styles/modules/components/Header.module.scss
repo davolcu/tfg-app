@@ -15,6 +15,7 @@
     background-color: $ternary-color;
     z-index: 2;
 
+    &__link,
     &__logo {
         height: 100%;
     }
@@ -47,5 +48,10 @@
         right: 10px;
         width: 10px;
         transform: translateY(-50%);
+    }
+
+    + main {
+        margin-left: 0;
+        width: 100%;
     }
 }

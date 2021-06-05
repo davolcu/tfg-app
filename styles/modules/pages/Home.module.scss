@@ -1,6 +1,59 @@
+// Colors and sizes of the application
+@import '../../style-guide/colors';
+@import '../../style-guide/sizes';
 // Mixins of the application
 @import '../../style-guide/mixins';
 
 .home {
     @include main-element;
+
+    &__container {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        column-gap: 15px;
+        row-gap: 15px;
+    }
+
+    &__card {
+        color: $primary-text-color;
+        min-height: 150px;
+        border: 1px solid $border-color;
+        border-radius: 5px;
+        box-shadow: 0 -17px 0 -10px $card-inset-color inset;
+    }
+
+    &__title {
+        font-size: $container-title-size;
+        font-weight: bold;
+        padding: 10px 15px;
+        border-bottom: 1px solid $border-color;
+    }
+
+    &__description {
+        font-size: $common-size;
+        font-weight: bold;
+        padding: 10px 15px;
+    }
+}
+
+.empty {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    font-size: $common-size;
+    color: $primary-text-color;
+
+    &__title {
+        @include container-title-element;
+    }
+
+    &__text:last-of-type {
+        margin-bottom: 10px;
+    }
+
+    &__button {
+        @include primary-button;
+        text-transform: uppercase;
+        padding: 12px 15px;
+    }
 }
