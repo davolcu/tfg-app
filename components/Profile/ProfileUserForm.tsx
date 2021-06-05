@@ -28,6 +28,7 @@ const ProfileUserForm = () => {
                 projectId ? setClientCookie('userProject', projectId) : expireUserProject();
                 setUser({ ...params, token });
                 createToast({ text: strings.user_updated_successfully, type: 'success', duration: 3500 });
+                location.href = '/profile';
             })
             .catch((error) => {
                 console.error(error);
