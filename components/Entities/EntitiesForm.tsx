@@ -4,6 +4,7 @@ import { FunctionComponent, useState, useContext } from 'react';
 import { IEntitiesForm } from '@/interfaces/components';
 // Custom imports
 import styles from '@/styles/modules/pages/Entities.module.scss';
+import Loader from '@/components/Generic/Loader';
 import { EntitiesPageContext } from '@/components/Placeholder/EntitiesPage';
 import { getInitialFormData, getFormAttributes, isFormValid } from '@/utils/pages/entitiesUtils';
 import { createToast } from '@/utils/utils';
@@ -60,6 +61,10 @@ const EntitiesForm: FunctionComponent<IEntitiesForm> = ({ data }) => {
                 setLoaded(true);
             });
     };
+
+    if (!loaded) {
+        return <Loader />;
+    }
 
     return (
         <section className={styles.entities__container}>
