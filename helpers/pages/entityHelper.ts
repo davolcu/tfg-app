@@ -6,6 +6,8 @@ export const strings = {
     link_placeholder: `This entity doesn't have Link`,
     style_label: 'CSS Style',
     style_placeholder: `This entity doesn't have Styles`,
+    slug_label: 'Slug',
+    slug_placeholder: `This entity doesn't have slug`,
     content_label: 'Content',
     content_placeholder: `This entity doesn't have Content`,
 };

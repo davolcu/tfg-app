@@ -50,6 +50,11 @@
                 "required": true
             },
             {
+                "name": "slug",
+                "type": "text",
+                "required": true
+            },
+            {
                 "name": "link",
                 "type": "text"
             },

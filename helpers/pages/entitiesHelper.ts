@@ -23,6 +23,8 @@ export const strings = {
     link_placeholder: 'Introduce target url or anchor',
     style_label: 'CSS Style',
     style_placeholder: 'Introduce CSS styles. For example: display: block; margin-top: 20px ',
+    slug_label: 'Slug',
+    slug_placeholder: 'Introduce the slug of the entity. Remember that has to be unique',
     content_label: 'Content',
     content_placeholder: 'Introduce the content here',
     // Toast messages
